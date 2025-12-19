@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import "gsap/CSSPlugin";
 
 import Background from "./components/background";
-import About from "./about";
+import About from "./about/page";
 
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(DrawSVGPlugin);
@@ -16,10 +17,10 @@ const page = () => {
   const heartRef = useRef<SVGPathElement | null>(null);
 
   useEffect(() => {
-    gsap.from("#navbar", {
-      duration: 1,
+    gsap.from(".nav-item", {
       opacity: 0,
       y: -50,
+      stagger: 0.2,
     });
 
     gsap.from("#title1", {
@@ -59,20 +60,22 @@ const page = () => {
   return (
     <>
       <div>
-        <div className="relative min-h-screen ">
+        <div className="relative min-h-screen max-w-screen overflow-hidden">
           <Background />
-          <div className="absolute top-0 left-0 right-0 z-10 flex justify-center gap-9 pt-10 overflow-hidden">
+          <div className="absolute top-0 left-0 right-0 z-10 flex justify-center gap-9 pt-10">
             <h1
-              id="navbar"
-              className="inline-block text-black text-3xl font-general nav-hover-btn"
+              className="nav-item inline-block text-black text-3xl font-general nav-hover-btn"
             >
-              ABOUT
+              <Link href="/about">
+                ABOUT
+              </Link>
             </h1>
             <h1
-              id="navbar"
-              className="inline-block text-black text-3xl font-general nav-hover-btn"
+              className="nav-item inline-block text-black text-3xl font-general nav-hover-btn"
             >
-              PORTFOLIO
+              <Link href="/portfolio">
+                PORTFOLIO
+              </Link>
             </h1>
 
             <div
@@ -94,19 +97,22 @@ const page = () => {
                   className="hover:stroke-red-600"
                 />
               </svg>
+
             </div>
 
             <h1
-              id="navbar"
-              className="inline-block text-black text-3xl font-general nav-hover-btn"
+              className="nav-item inline-block text-black text-3xl font-general nav-hover-btn"
             >
-              CONTACT
+              <Link href="/contact">
+                CONTACT
+              </Link>
             </h1>
             <h1
-              id="navbar"
-              className="inline-block text-black text-3xl font-general nav-hover-btn"
+              className="nav-item inline-block text-black text-3xl font-general nav-hover-btn"
             >
-              SERVICES
+              <Link href="/services">
+                SERVICES
+              </Link>
             </h1>
           </div>
 
@@ -127,7 +133,6 @@ const page = () => {
           </div>
         </div>
         <About />
-
       </div>
     </>
   );
