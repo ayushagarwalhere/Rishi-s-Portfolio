@@ -26,7 +26,7 @@ const About = () => {
       gsap.to(pathEl, {
         attr: { d: newPath },
         ease: "power3.out",
-        duration: 0.3,
+        duration: 0.5,
       });
     };
 

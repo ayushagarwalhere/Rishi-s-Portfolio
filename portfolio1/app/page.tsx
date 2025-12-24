@@ -60,7 +60,7 @@ const page = () => {
   return (
     <>
       <div>
-        <div className="relative min-h-screen max-w-screen overflow-hidden">
+        <div className="relative min-h-screen max-w-screen overflow-hidden bg-white">
           <Background />
           <div className="absolute top-0 left-0 right-0 z-10 flex justify-center gap-9 pt-10">
             <h1
